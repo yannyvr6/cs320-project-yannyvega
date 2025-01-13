@@ -2,7 +2,7 @@ import {useEffect, useState} from 'react';
 import {API_URL} from "./config";
 
 function App() {
-  const [message, SetMessage] = useState( ''); //will hold the message from the backend
+  const [message, setMessage] = useState( ''); //will hold the message from the backend
 
   //useEffect is a React method that will run after this page is loaded
   // it will fetch the message from the backend
