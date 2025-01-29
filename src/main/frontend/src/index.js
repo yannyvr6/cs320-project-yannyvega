@@ -1,10 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
-import Page2 from "./Page2";
+import App from './Components/App';
+import Page2 from "./Components/Page2";
 import {BrowserRouter , Routes , Route} from "react-router-dom";
-import Navbar from "./Navbar";
+import Navbar from "./Components/Navbar";
+import { Amplify } from "aws-amplify";
+import config from './amplifyconfiguration.json';
+
+Amplify.configure(config)
 //import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
