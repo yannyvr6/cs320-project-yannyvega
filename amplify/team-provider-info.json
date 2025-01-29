@@ -10,6 +10,11 @@
       "StackName": "amplify-cs320projectyannyveg-dev-bf852",
       "StackId": "arn:aws:cloudformation:us-west-1:730335528058:stack/amplify-cs320projectyannyveg-dev-bf852/4209f0b0-d38a-11ef-951f-02b2f85b8251",
       "AmplifyAppId": "d1hukhzjn8xz1s"
+    },
+    "categories": {
+      "auth": {
+        "cs320projectyannyvega317b652": {}
+      }
     }
   }
 }
