@@ -7,6 +7,8 @@ import {BrowserRouter , Routes , Route} from "react-router-dom";
 import Navbar from "./Components/Navbar";
 import { Amplify } from "aws-amplify";
 import config from './amplifyconfiguration.json';
+import BookSuggestions from "./Components/BookSuggestions";
+import Request from "./Components/Request";
 
 Amplify.configure(config)
 //import reportWebVitals from './reportWebVitals';
@@ -20,6 +22,8 @@ root.render(
         <Routes>
             <Route path="/" element={<App/>}/>
             <Route path="/Page2" element={<Page2/>}/>
+            <Route path="/BookSuggestions" element={<BookSuggestions/>}/>
+            <Route path="/Request" element={<Request/>}/>
                 {/* You can add more pages by adding more rout elements here!*/}
         </Routes>
     </BrowserRouter>

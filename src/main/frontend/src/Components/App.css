@@ -1,38 +1,89 @@
-.App {
-  text-align: center;
+/* Style the main container */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #f9f9f9;
+    color: #333;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 40px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Style the header */
+header {
+    background-color: #FFF7D3;
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: black;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* Style the heading */
+h1 {
+    font-size: 30px;
+    margin-left: 20px;
+    text-align: center;
+    font-family: "Times New Roman", Times, serif;
+}
+img {
+    display: block;
+    margin: 0 auto;
+    width: auto;
+    max-width: 1200px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+p {
+    display: inline-block;  /* Makes the h2, h3, and h4 appear next to each other */
+    margin-right: 40px;      /* Adds space between the elements */
+    vertical-align: top;     /* Aligns them to the top */
+    font-size: 16px;         /* Adjust text size for readability */
+    line-height: 2;        /* Space out lines for clarity */
+    color: #BF5700;             /* Softer text color */
+    font-family: "Times New Roman", Times, serif;
+    text-align: center;
+    top: -20px; /* Adjust this value to align with the top line */
+    width: 100%;
 }
 
-.App-link {
-  color: #61dafb;
+.request-box {
+    margin: 0 auto;
+    width: auto;
+    max-width: 1200px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    text-align: left;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.request-box label {
+    display: block;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.request-box input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.request-box button {
+    width: 100%;
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #ff8c00;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.request-box button:hover {
+    background-color: #e67e00;
 }
