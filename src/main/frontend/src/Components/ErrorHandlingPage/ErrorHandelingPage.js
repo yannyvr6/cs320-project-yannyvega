@@ -54,7 +54,34 @@ function ErrorHandlingPage() {
         } else {
             setMessage(text);
         }
+
+        const handleSubmitRequest = async () => {
+            const emailError = validateEmail(email);
+            const titleError = !request ? "Title is Required." : "";
+            const authorError = !author ? "Author Name is required." : "";
+
+            if (emailError || emailError || requestError) {
+                alert(`${ emailError || "" } ${ titleError || "" } ${ authorError || "" }`);
+                return;
+            }
+            const response = await fetch(`${API_URL}/submit-request`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ name, email, title, author })
+            })
+            const status = response.status;
+            const text = await response.text();
+
+            if (status === 400) {
+                alert(text);
+            } else {
+                setMessage(text);
+            }
+        }
     };
+
 
     return (
         <div style={ {margin: '10px'} }>

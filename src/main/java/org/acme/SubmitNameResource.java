@@ -24,6 +24,11 @@ public class SubmitNameResource {
                     "Please enter only one name. Make sure your name does not contain spaces.").build();
         }
 
+        if (user.name.length() < 3) {
+            return Response.status(Response.Status.BAD_REQUEST).entity("Name must be at least 3 characters long.").build();
+        }
+
+
         // Create name in database
         user.persist();
 
