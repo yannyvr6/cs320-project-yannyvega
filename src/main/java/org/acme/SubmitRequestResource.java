@@ -31,9 +31,6 @@ public class SubmitRequestResource {
         if (!request.email.contains("@")) {
             return Response.status(Response.Status.BAD_REQUEST).entity("Email must contain '@'.").build();
         }
-        if (!request.email.matches("^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$")) {
-            return Response.status(Response.Status.BAD_REQUEST).entity("Enter a valid email address.").build();
-        }
 
         // Validate book title
         if (request.title == null || request.title.isEmpty()) {
