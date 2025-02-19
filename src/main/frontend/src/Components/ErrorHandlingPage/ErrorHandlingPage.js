@@ -5,7 +5,6 @@ import { API_URL } from "../config";
 export const validateName = (name) => {
     if (!name) return "Name is required.";
     if (name.length < 3) return "Name must be at least 3 characters long.";
-    if (name.includes(" ")) return "Name cannot contain spaces.";
     return null;
 };
 
