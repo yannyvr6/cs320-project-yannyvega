@@ -8,8 +8,6 @@ import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 
-
-
 @Path("/submit-request")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
@@ -48,6 +46,7 @@ public class SubmitRequestResource {
         bookRequest.title = request.title;
         bookRequest.author = request.author;
         bookRequest.email = request.email;
+        bookRequest.name = request.name;
 
         bookRequest.persist();
 
