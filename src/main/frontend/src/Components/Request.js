@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { API_URL } from "./config";
-import { validateEmail, validateRequest } from "./ErrorHandlingPage/ErrorHandlingPage";
+import { validateEmail, validateRequest, validateName } from "./ErrorHandlingPage/ErrorHandlingPage";
 
 function Request() {
     const [email, setEmail] = useState("");
+    const [name, setName] = useState("");
     const [title, setTitle] = useState("");
     const [author, setAuthor] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
@@ -13,6 +14,7 @@ function Request() {
 
         // Validate inputs
         const emailError = validateEmail(email);
+        const nameError = validateName(email);
         const requestError = validateRequest(title, author);
 
 
@@ -23,22 +25,25 @@ function Request() {
 
         // Send request to API (assuming API_URL is already set)
         try {
-            const response = await fetch(`${API_URL}/submit-request`, {
+            const response = await fetch("http://localhost:8080/submit-request", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ email, title, author })
+                body: JSON.stringify({ email, title, author, name})
             });
 
-            const text = await response.text();
-            if (response.status === 400) {
-                setErrorMessage(text);
+            if (!response.ok) {
+                const errorText = await response.text();
+                setErrorMessage(errorText);
             } else {
-                setErrorMessage("Request submitted successfully!");
-            }
-        } catch (error) {
-            setErrorMessage("An error occurred while submitting.");
-        }
-    };
+                    setErrorMessage("Request submitted successfully!");
+                    setEmail("");
+                    setTitle("");
+                    setName("");
+                    setAuthor("");
+                }
+            } catch (error) {
+                setErrorMessage("An error occurred while submitting.");
+            }}
 
     return (
         <div>
@@ -70,41 +75,48 @@ function Request() {
                 }}>{ errorMessage }</p> }
             </p>
 
-                <div className="request-box">
-                    <label htmlFor="email">[Optional] Enter Your Email:</label>
-                    <input
-                        type="email"
-                        id="email"
-                        placeholder="Your Email.."
-                        value={ email }
-                        onChange={ (e) => setEmail(e.target.value) }
-                    />
+            <div className="request-box">
+                <label htmlFor="name"> Enter Your Name: </label>
+                <input type="text"
+                       id="name"
+                       placeholder="Enter Your name"
+                       value={ name }
+                       onChange={(e) => setName(e.target.value)}
+                />
+                <label htmlFor="email">Enter Your Email:</label>
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Your Email.."
+                    value={ email }
+                    onChange={ (e) => setEmail(e.target.value) }
+                />
 
-                    <label htmlFor="book-title">Book Title:</label>
-                    <input
-                        type="text"
-                        id="book-title"
-                        placeholder="Book Title.."
-                        value={ title }
-                        onChange={ (e) => setTitle(e.target.value) }
-                    />
+                <label htmlFor="book-title">Book Title:</label>
+                <input
+                    type="text"
+                    id="book-title"
+                    placeholder="Book Title.."
+                    value={ title }
+                    onChange={ (e) => setTitle(e.target.value) }
+                />
 
-                    <label htmlFor="author-name">Author Name:</label>
-                    <input
-                        type="text"
-                        id="author-name"
-                        placeholder="Author Name.."
-                        value={ author }
-                        onChange={ (e) => setAuthor(e.target.value) }
-                    />
+                <label htmlFor="author-name">Author Name:</label>
+                <input
+                    type="text"
+                    id="author-name"
+                    placeholder="Author Name.."
+                    value={ author }
+                    onChange={ (e) => setAuthor(e.target.value) }
+                />
 
-                    <button type="submit" onClick={ handleSubmit }>Submit Request</button>
-                </div>
+                <button type="submit" onClick={ handleSubmit }>Submit Request</button>
+            </div>
 
-</div>
+        </div>
 
-)
-    ;
+    )
+        ;
 }
 
 export default Request;

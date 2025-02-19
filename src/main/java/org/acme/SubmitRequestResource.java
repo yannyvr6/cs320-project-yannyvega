@@ -4,14 +4,18 @@ import jakarta.transaction.Transactional;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
+import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 
+
+
 @Path("/submit-request")
+@Consumes(MediaType.APPLICATION_JSON)
+@Produces(MediaType.APPLICATION_JSON)
 public class SubmitRequestResource {
     @POST
     @Transactional
-    @Consumes(MediaType.APPLICATION_JSON)
     public Response submitRequest(RequestData request) {
         // Validate name
         if (request.name == null || request.name.isEmpty()) {
@@ -19,9 +23,6 @@ public class SubmitRequestResource {
         }
         if (request.name.length() < 3) {
             return Response.status(Response.Status.BAD_REQUEST).entity("Name must be at least 3 characters long.").build();
-        }
-        if (request.name.contains(" ")) {
-            return Response.status(Response.Status.BAD_REQUEST).entity("Name cannot contain spaces.").build();
         }
 
         // Validate email
@@ -42,6 +43,17 @@ public class SubmitRequestResource {
             return Response.status(Response.Status.BAD_REQUEST).entity("Author Name is required.").build();
         }
 
-        return Response.ok("Request submitted successfully!").build();
+        //BookRequest Entity
+        BookRequest bookRequest = new BookRequest();
+        bookRequest.title = request.title;
+        bookRequest.author = request.author;
+        bookRequest.email = request.email;
+
+        bookRequest.persist();
+
+        return Response.status(Response.Status.CREATED).entity(bookRequest).build();
+
     }
 }
+
+
