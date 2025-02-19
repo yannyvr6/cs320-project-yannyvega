@@ -1,4 +1,5 @@
 import {useEffect, useState} from 'react';
+import { Link } from "react-router-dom";
 import {API_URL} from "./config";
 import './App.css';
 
@@ -23,7 +24,9 @@ function App() {
     return (
         <div>
             <h1>Build Your Digital Library</h1>
-            <img src={ 'https://www.uxblondon.com/asset/8219' }/>
+            <Link to="/booksuggestions">
+                <img src={'https://babluboy.github.io/bookworm/images/BookwormLibraryView.png'} alt="Library" />
+            </Link>
             <p>Digital library with URLs &nbsp; • &nbsp; PDF or Epub. Your choice! &nbsp; • &nbsp; Look up the books you
                 love and in your wishlist. &nbsp; • &nbsp; Look up new option per genre.</p>
         </div>
