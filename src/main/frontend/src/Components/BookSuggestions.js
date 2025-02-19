@@ -34,20 +34,14 @@ function BookSuggestions() {
         {
             title: "Lightlark",
             genre: ["Romance", "Fantasy", "Fiction"],
-            coverImage: "https://m.media-amazon.com/images/I/716+ZLRk46L.jpg",
+            coverImage: "https://m.media-amazon.com/images/I/61BGGE8BGZL._AC_UF1000,1000_QL80_.jpg",
             downloadUrl: "https://vk.com/doc329000261_673892100?hash=sUhOV2l9EXihm6Z5dAlBcBtyPqZ1KPzDYzIdKtbwl9H&api=1&no_preview=1",
         },
         {
             title: "Nightbane",
             genre: ["Romance", "Fantasy", "Fiction"],
-            coverImage: "https://m.media-amazon.com/images/I/61BGGE8BGZL._AC_UF1000,1000_QL80_.jpg",
+            coverImage: "https://m.media-amazon.com/images/I/716+ZLRk46L.jpg",
             downloadUrl: "https://vk.com/doc329000261_673892108?hash=xxqb16mfKY7TKi6o86uTzc0rbNdObeYoRGg9nDIA0gz&api=1&no_preview=1",
-        },
-        {
-            title: "Kingdom of the Veiled",
-            genre: ["Romance", "Fantasy", "Fiction"],
-            coverImage: "https://m.media-amazon.com/images/I/71F9eyFhcEL._UF1000,1000_QL80_.jpg",
-            downloadUrl: "https://vk.com/doc584006206_676126051?hash=ZAaqbT7dRFlfbuIV8ircwIcTSUwB3l8JcfcH8aopnus&api=1&no_preview=1",
         },
     ];
 
