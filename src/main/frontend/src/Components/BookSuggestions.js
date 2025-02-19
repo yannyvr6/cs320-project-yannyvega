@@ -9,33 +9,45 @@ function BookSuggestions() {
     const books = [
         {
             title: "The Great Gatsby",
-            genre: "Fiction",
+            genre: ["Fiction"],
             coverImage: "https://i0.wp.com/americanwritersmuseum.org/wp-content/uploads/2018/02/CK-3.jpg?resize=267%2C400&ssl=1",
             downloadUrl: "https://www.planetebook.com/free-ebooks/the-great-gatsby.epub",
         },
         {
             title: "A Brief History of Time",
-            genre: "Science",
+            genre: ["Science"],
             coverImage: "https://m.media-amazon.com/images/I/91ebghaV-eL._AC_UF1000,1000_QL80_.jpg",
-            downloadUrl: "https://drive.google.com/file/d/0B1PBdu03t91DYUdVc0c4Y2Vzb0k/view?resourcekey=0-evEIWkVG3IO0k73tz2dlSw",
+            downloadUrl: "https://vk.com/doc337300612_461607480?hash=8MxRGlu5WPxooHzZ6QbaxhN4c6V54irnS6UZUBU0Y3c&api=1&no_preview=1",
         },
         {
             title: "The Hobbit",
-            genre: "Fantasy",
+            genre: ["Fantasy"],
             coverImage: "https://m.media-amazon.com/images/I/712cDO7d73L.jpg",
             downloadUrl: "https://isidore.co/CalibreLibrary/Tolkien,%20J.%20R.%20R_/The%20Hobbit%20(5022)/The%20Hobbit%20-%20Tolkien,%20J.%20R.%20R_.epub",
         },
         {
             title: "The Catcher in the Rye",
-            genre: "Fiction",
+            genre: ["Fiction"],
             coverImage: "https://m.media-amazon.com/images/I/91fQEUwFMyL.jpg",
-            downloadUrl: "https://epdf.pub/download/the-catcher-in-the-rye-5ea7ac8f68c9d.html",
+            downloadUrl: "https://vk.com/doc660179046_647051393?hash=N80sxVlcKQSxbRMi3rXLmMATCDRdwNfqaPkyyhZYYQH&api=1&no_preview=1",
         },
         {
             title: "Lightlark",
-            genre: "Romance",
-            coverImage: "https://m.media-amazon.com/images/I/61BGGE8BGZL._AC_UF1000,1000_QL80_.jpg",
+            genre: ["Romance", "Fantasy", "Fiction"],
+            coverImage: "https://m.media-amazon.com/images/I/716+ZLRk46L.jpg",
             downloadUrl: "https://vk.com/doc329000261_673892100?hash=sUhOV2l9EXihm6Z5dAlBcBtyPqZ1KPzDYzIdKtbwl9H&api=1&no_preview=1",
+        },
+        {
+            title: "Nightbane",
+            genre: ["Romance", "Fantasy", "Fiction"],
+            coverImage: "https://m.media-amazon.com/images/I/61BGGE8BGZL._AC_UF1000,1000_QL80_.jpg",
+            downloadUrl: "https://vk.com/doc329000261_673892108?hash=xxqb16mfKY7TKi6o86uTzc0rbNdObeYoRGg9nDIA0gz&api=1&no_preview=1",
+        },
+        {
+            title: "Kingdom of the Veiled",
+            genre: ["Romance", "Fantasy", "Fiction"],
+            coverImage: "https://m.media-amazon.com/images/I/71F9eyFhcEL._UF1000,1000_QL80_.jpg",
+            downloadUrl: "https://vk.com/doc584006206_676126051?hash=ZAaqbT7dRFlfbuIV8ircwIcTSUwB3l8JcfcH8aopnus&api=1&no_preview=1",
         },
     ];
 
@@ -59,7 +71,7 @@ function BookSuggestions() {
 
     const filterBooks = (genre, term) => {
         const filteredBooks = books.filter(book =>
-            (genre ? book.genre === genre : true) &&
+            (genre ? book.genre.includes(genre) : true) &&
             book.title.toLowerCase().includes(term.toLowerCase())
         );
         setSuggestedBooks(filteredBooks);
