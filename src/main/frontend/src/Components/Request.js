@@ -14,18 +14,18 @@ function Request() {
 
         // Validate inputs
         const emailError = validateEmail(email);
-        const nameError = validateName(email);
+        const nameError = validateName(name);
         const requestError = validateRequest(title, author);
 
 
-        if (emailError || requestError) {
-            setErrorMessage(`${emailError || ""} ${requestError || ""}`);
+        if (emailError || requestError || nameError) {
+            setErrorMessage(`${emailError || ""} ${requestError || ""} ${nameError ||""}`);
             return;
         }
 
         // Send request to API (assuming API_URL is already set)
         try {
-            const response = await fetch("http://localhost:8080/submit-request", {
+            const response = await fetch(`${API_URL}/submit-request`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ email, title, author, name})
@@ -35,15 +35,15 @@ function Request() {
                 const errorText = await response.text();
                 setErrorMessage(errorText);
             } else {
-                    setErrorMessage("Request submitted successfully!");
-                    setEmail("");
-                    setTitle("");
-                    setName("");
-                    setAuthor("");
-                }
-            } catch (error) {
-                setErrorMessage("An error occurred while submitting.");
-            }}
+                setErrorMessage("Request submitted successfully!");
+                setEmail("");
+                setTitle("");
+                setName("");
+                setAuthor("");
+            }
+        } catch (error) {
+            setErrorMessage("An error occurred while submitting.");
+        }}
 
     return (
         <div>
