@@ -14,7 +14,7 @@ import jakarta.ws.rs.core.Response;
 public class SubmitRequestResource {
     @POST
     @Transactional
-    public Response submitRequest(RequestData request) {
+    public Response submitRequest(BookRequest request) {
         // Validate name
         if (request.name == null || request.name.isEmpty()) {
             return Response.status(Response.Status.BAD_REQUEST).entity("Name is required.").build();
@@ -50,6 +50,7 @@ public class SubmitRequestResource {
 
         bookRequest.persist();
 
+        
         return Response.status(Response.Status.CREATED).entity(bookRequest).build();
 
     }
