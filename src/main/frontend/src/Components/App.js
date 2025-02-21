@@ -1,3 +1,5 @@
+//main/home page plus the app or main component file
+
 import {useEffect, useState} from 'react';
 import { Link } from "react-router-dom";
 import {API_URL} from "./config";

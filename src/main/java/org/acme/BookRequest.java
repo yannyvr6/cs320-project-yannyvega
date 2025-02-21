@@ -1,7 +1,11 @@
+//sET AND GETTers for the book requests.
+
 package org.acme;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 import jakarta.persistence.Entity;
+import jakarta.ws.rs.*;
+import jakarta.ws.rs.core.MediaType;
 
 @Entity
 public class BookRequest extends PanacheEntity {
@@ -23,3 +27,5 @@ public class BookRequest extends PanacheEntity {
     public void setAuthor(String author) { this.author = author; }
 
 }
+
+

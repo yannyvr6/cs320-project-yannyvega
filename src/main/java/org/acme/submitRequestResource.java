@@ -1,17 +1,17 @@
+//Applies validations for the request.js
+
 package org.acme;
 
 import jakarta.transaction.Transactional;
-import jakarta.ws.rs.Consumes;
-import jakarta.ws.rs.POST;
-import jakarta.ws.rs.Path;
-import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+import java.util.List;
 
 @Path("/submit-request")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
-public class SubmitRequestResource {
+class SubmitRequestResource {
     @POST
     @Transactional
     public Response submitRequest(BookRequest request) {
@@ -50,10 +50,68 @@ public class SubmitRequestResource {
 
         bookRequest.persist();
 
-        
+
         return Response.status(Response.Status.CREATED).entity(bookRequest).build();
 
     }
 }
+
+
+@Path("/book-request")
+@Produces(MediaType.APPLICATION_JSON)
+@Consumes(MediaType.APPLICATION_JSON)
+public class submitRequestResource {
+
+
+    //CREATE
+    @POST
+    @Path("/submit-request")
+    public Response createRequest (BookRequest request) {
+        request.persist();
+        return Response.status(Response.Status.CREATED).entity(request).build();
+    }
+
+    //READ
+    @GET
+    @Path("/get-request")
+    public List<BookRequest> getAllRequest(){
+        return BookRequest.listAll();
+    }
+
+    //PUT
+    @PUT
+    @Path("/update-request/{id}")
+    public Response updateRequest (@PathParam("id") String id, BookRequest updatedRequest) {
+        BookRequest request = BookRequest.findById(id);
+
+        if (request == null) {
+            return Response.status(Response.Status.NOT_FOUND).entity("Request not found.").build();
+        }
+
+        //Update
+
+        request.title = updatedRequest.title;
+        request.author = updatedRequest.author;
+        request.email = updatedRequest.email;
+        request.name = updatedRequest.name;
+        request.persist();
+
+        return Response.status(Response.Status.OK).entity(request).build();
+    }
+
+    //DELETE
+    @DELETE
+    @Path("/delete-request/{id}")
+    public Response deleteRequest (@PathParam("id") String id) {
+        BookRequest request = BookRequest.findById(id);
+
+        if (request == null) {
+            return Response.status(Response.Status.NOT_FOUND).entity("Request not found.").build();
+        }
+        request.delete();
+        return Response.status(Response.Status.NO_CONTENT).build();
+        }
+    }
+
 
 

@@ -1,3 +1,5 @@
+//Sign in Page and Request Books (Shown under the sign in username, after sign in)
+
 import { withAuthenticator} from "@aws-amplify/ui-react";
 import '@aws-amplify/ui-react/styles.css'
 import "./Page2.css"
@@ -25,7 +27,7 @@ export const ViewRequests = () => {
 
     const fetchRequests = async () => {
         try {
-            const response = await fetch(`${API_URL}/get-requests`);
+            const response = await fetch(`${API_URL}/get-request`);
            console.log(`Response Status`, response.status);
            console.log(`Response Text`, await response.text());
 

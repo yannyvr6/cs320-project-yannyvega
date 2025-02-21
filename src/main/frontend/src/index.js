@@ -1,3 +1,5 @@
+//index files with the routes for the files when click on them in the browsers
+
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';

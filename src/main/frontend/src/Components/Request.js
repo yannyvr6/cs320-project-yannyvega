@@ -1,3 +1,5 @@
+//Allows users to request books and has the validations for the requests.
+
 import React, { useState } from "react";
 import { API_URL } from "./config";
 import { validateEmail, validateRequest, validateName } from "./ErrorHandlingPage/ErrorHandlingPage";

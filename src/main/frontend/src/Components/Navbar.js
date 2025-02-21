@@ -1,3 +1,5 @@
+//Navbar with the options/link at the top of the page
+
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
