@@ -31,7 +31,7 @@ function App() {
             </Link>
             <p>Digital library with URLs &nbsp; • &nbsp; PDF or Epub. Your choice! &nbsp; • &nbsp; Look up the books you
                 love and in your wishlist. &nbsp; • &nbsp; Look up new option per genre.</p>
-        <Link to="/booksuggestions">
+        <Link to="/Page2">
             <button>View Book Request </button>
         </Link>
 
